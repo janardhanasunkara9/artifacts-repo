@@ -1,0 +1,25 @@
+##Env Variables learning in Workflow.
+
+
+name: 3_Env_vars_wkfw
+
+on: push
+
+env:
+
+  DBNAME: "Oracle"
+  PORT: 1551
+  HOSTNAME: "test.db.oracle.com"
+
+jobs:
+  
+  env_vars_job:
+   
+    runs-on: ubuntu-latest
+    steps:
+      env:
+        USERNAME: "Jana"
+
+      - name: "Printing ENv Variables Values"
+        run: echo "The DB NAme is ${DBNAME} and Port is ${env.PORT}"
+          
