@@ -4,6 +4,8 @@ on: push
 jobs:
   test_artifacts_job:
     runs-on: ubuntu-latest
+    outputs:
+        output1: ${{ steps.publish1.outputs.filename }}   ## steps.<id>.outputs.<keyvalue>
     steps:
       - name: "Test Upload Artifacts"
         uses: actions/checkout@v3
@@ -18,18 +20,15 @@ jobs:
               /tmp/buddy.txt
               /tmp/db/nana.txt
       - name: "Learning about outputs"
-        run: find /tmp -type f -name "buddy*" -print
+        id: publish1                            #Set ID, will refer in above outputs
+        run: find /tmp/db -type f -name "nana*" -execdir echo "filename={}" >> $GITHUB_OUTPUT ';'  ## Storing KeyValue-Pair , the key "filename" used above outputs.
 
-  test_dwnld_artifacts_job:
-    needs: test_artifacts_job     #Add Job Dependencies
+  output_job:
     runs-on: ubuntu-latest
+    needs: test_artifacts_job
     steps:
-      - name: "Downloading Artifacts"   
-        uses: actions/download-artifact@v4       # Action for download Artifacts
-        with:
-            name: my_upload_artifact    ## Name must be above defined Artifact name in above job.
-
-      - run: ls -ltr
+        - name: "Displaying the Output value from previous Job"
+          run: echo "${{ needs.test_artifacts_job.outputs.output1 }}   ## needs.<jobname>.outputs.<outputname>
                            
 
 
