@@ -22,4 +22,7 @@ jobs:
       - name: "Printing ENv Variables Values"
         run: echo "The DB NAme is ${DBNAME} and Port is ${PORT} and Username is ${USERNAME}"
       - run: echo "The DB NAme is ${{ env.DBNAME}} and Port is ${{ env.PORT }} and Username is ${{ env.USERNAME }}"
+
+      - name: "Running Shell Script"
+        run: sh 1_pass_env_values_wkfw.sh
           
