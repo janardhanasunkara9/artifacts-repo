@@ -8,6 +8,8 @@ jobs:
       - name: "Test Upload Artifacts"
         uses: actions/checkout@v3
       - run: echo "Hello Buddy" > /tmp/buddy.txt
+      - run: df -h
+      - run: mkdir -p /tmp/db
       - run: echo "Hello Nana" > /tmp/db/nana.txt
       - uses: actions/upload-artifact@v4
         with:
