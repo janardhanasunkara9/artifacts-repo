@@ -20,5 +20,5 @@ jobs:
       USERNAME: "Jana_user"
     steps:
       - name: "Printing ENv Variables Values"
-        run: echo "The DB NAme is ${DBNAME} and Port is ${PORT}"
+        run: echo "The DB NAme is ${DBNAME} and Port is ${PORT} and Username is ${USERNAME}"
           
