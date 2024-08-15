@@ -11,9 +11,23 @@ jobs:
       - run: df -h
       - run: mkdir -p /tmp/db
       - run: echo "Hello Nana" > /tmp/db/nana.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4           #Define Artifact Upload Action
         with:
-            name: my_uploading_artifact
-            path: |
+          name: my_upload_artifact             #userdefined name for the Artifact and Upload filees & dir to this Artifact.
+          path: |                                 #Files and Dirs thats are Uploading to above Artifact
               /tmp/buddy.txt
               /tmp/db/nana.txt
+
+  test_dwnld_artifacts_job:
+    needs: test_artifacts_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Downloading Artifacts"
+        uses: actions/download-artifact@v4
+        with:
+            name: my_upload_artifact
+
+      - run: ls -ltr
+                           
+
+
