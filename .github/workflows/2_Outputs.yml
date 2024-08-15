@@ -18,7 +18,7 @@ jobs:
               /tmp/buddy.txt
               /tmp/db/nana.txt
       - name: "Learning about outputs"
-        run: find /tmp -type f -name "buddy*" -print {} \
+        run: find /tmp -type f -name "buddy*" -print
 
   test_dwnld_artifacts_job:
     needs: test_artifacts_job     #Add Job Dependencies
