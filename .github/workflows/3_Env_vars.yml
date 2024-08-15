@@ -5,7 +5,7 @@ name: 3_Env_vars_wkfw
 
 on: push
 
-env:
+env:                   ## Declare Env Variables at Workflow level
 
   DBNAME: "Oracle"
   PORT: 1551
@@ -17,11 +17,11 @@ jobs:
    
     runs-on: ubuntu-latest
     env:
-      USERNAME: "Jana_user"
+      USERNAME: "Jana_user"         # Declare Env Variable in  Job level
     steps:
       - name: "Printing ENv Variables Values"
-        run: echo "The DB NAme is ${DBNAME} and Port is ${PORT} and Username is ${USERNAME}"
-      - run: echo "The DB NAme is ${{ env.DBNAME}} and Port is ${{ env.PORT }} and Username is ${{ env.USERNAME }}"
+        run: echo "The DB NAme is ${DBNAME} and Port is ${PORT} and Username is ${USERNAME}"                        ## Method 1 : Printing Env Variables values
+      - run: echo "The DB NAme is ${{ env.DBNAME}} and Port is ${{ env.PORT }} and Username is ${{ env.USERNAME }}"  ## Method 2 : Printing Env Variables values
 
       - name: "Get Code from Repo"
         uses: actions/checkout@v3
