@@ -28,7 +28,7 @@ jobs:
     needs: test_artifacts_job
     steps:
         - name: "Displaying the Output value from previous Job"
-          run: echo "${{ needs.test_artifacts_job.outputs.output1 }}""   ## needs.<jobname>.outputs.<outputname>
+          run: echo "${{ needs.test_artifacts_job.outputs.output1 }}"   ## needs.<jobname>.outputs.<outputname>
                            
 
 
