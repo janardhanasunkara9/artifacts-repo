@@ -16,10 +16,9 @@ jobs:
   env_vars_job:
    
     runs-on: ubuntu-latest
+    env:
+      USERNAME: "Jana_user"
     steps:
-      env:
-        USERNAME: "Jana"
-
       - name: "Printing ENv Variables Values"
         run: echo "The DB NAme is ${DBNAME} and Port is ${env.PORT}"
           
