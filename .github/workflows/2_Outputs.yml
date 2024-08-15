@@ -1,4 +1,4 @@
-name: 1_test_artifacts_wkfw
+name: 1_Outputs_wkfw
 on: push
 
 jobs:
@@ -17,6 +17,8 @@ jobs:
           path: |                                 #Files and Dirs thats are Uploading to above Artifact
               /tmp/buddy.txt
               /tmp/db/nana.txt
+      - name: "Learning about outputs"
+        run: find /tmp -type -f -name "buddy*" -print {} \
 
   test_dwnld_artifacts_job:
     needs: test_artifacts_job     #Add Job Dependencies
